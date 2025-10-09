@@ -1,0 +1,79 @@
+项目总结与协作规则（xuexi）
+
+一、项目概览
+- 技术栈：uni-app（Vue 3 + @dcloudio/vite-plugin-uni），Vite 构建
+- 运行端：H5、小程序（mp-weixin）等多端适配
+- 入口文件：`src/main.js`；根组件：`src/App.vue`
+- 路由与页面：由 `src/pages.json` 声明，页面物理路径为 `src/pages/<name>/index.vue`
+- 资源与数据：静态资源位于 `src/static/`，业务数据位于 `src/data/`
+
+二、目录规范
+- 源码目录：`xuexi/src/`
+  - `pages/`：页面目录，必须采用 `pages/<name>/index.vue`
+  - `data/`：业务数据，如 `data/units.js`
+  - `static/`：静态资源（图片、测试 HTML 等），H5 直接以 `/static/...` 访问
+  - `App.vue`：全局应用组件
+  - `main.js`：应用入口（createSSRApp）
+  - `manifest.json`：uni-app 应用配置
+  - `pages.json`：页面与窗口配置
+- 构建配置：`xuexi/vite.config.js`（启用 `@dcloudio/vite-plugin-uni`）
+
+三、路由与页面约定
+- `pages.json` 的 `path` 必须与物理文件保持一一对应：
+  - 例如：`path: "pages/vocab/index"` 对应 `src/pages/vocab/index.vue`
+- 页面间跳转统一使用：
+  - `uni.navigateTo({ url: '/pages/<name>/index?key=value' })`
+  - 回到首页统一：`/pages/index/index`
+- H5 端修改 `pages.json` 后需重启开发服务（如 `npm run dev:h5`）以生效
+
+四、静态资源与路径
+- 统一使用绝对路径 `/static/...` 引用静态资源（跨端更稳健）
+- 动态图片命名需要自行在 `src/static/` 放置对应文件，例如：
+  - 词汇图片生成规则：将词汇转为 `kebab-case`，非字母数字移除，如：`/static/good-morning.png`
+
+五、数据与音频
+- 课程单元数据来源：`src/data/units.js`
+- 朗读音频策略：
+  - 优先使用有道 TTS：`https://dict.youdao.com/dictvoice?audio=<text>&type=1`
+  - 回退方案：H5 使用 Web Speech API（带条件编译）
+
+六、编码规范
+- 使用 Vue 3 `<script setup>` 语法
+- 命名规范：
+  - 变量/常量使用完整、语义化英文单词
+  - 函数名为动词短语，常量名为名词短语
+- 结构与控制流：
+  - 倾向早返回，避免深层嵌套
+  - 不随意 try/catch；捕获后需合理处理
+- 注释：只写关键性背景、非显然约束和边界条件
+- 样式：保持现有格式，不进行与业务无关的全局重排
+
+七、提交流程
+- 变更前：本地运行验证（H5）并检查关键流程（首页→词句预习→预习检测→测验总结）
+- 变更后：
+  - 同步更新 `pages.json` 与页面内 `url` 保持一致
+  - 对应新增资源放入 `src/static/`
+  - 若涉及数据结构，更新 `src/data/units.js` 并回归测试
+
+八、常见问题处理
+- 404（Failed to fetch dynamically imported module）
+  - 原因：`pages.json` 路径与物理文件不一致，或 H5 未重启
+  - 处理：统一为 `pages/<name>/index`，并重启 H5 服务
+- 静态资源不显示
+  - 检查是否位于 `src/static/` 且以 `/static/...` 引用
+- 音频无法播放
+  - 检查网络 TTS 可达性，或使用回退的 Web Speech API
+
+九、命名与新增页面流程
+- 新增页面：
+  1) 新建 `src/pages/<name>/index.vue`
+  2) 在 `src/pages.json` 中添加 `{ path: 'pages/<name>/index', style: { ... } }`
+  3) 从其它页面以 `/pages/<name>/index` 进行跳转
+  4) H5 端重启开发服务
+
+十、质量基线
+- 页面路由跳转不报错
+- 主要学习流程可顺畅跑通
+- 控制台无未处理异常
+- 跨端策略（H5/小程序）保留条件编译
+
