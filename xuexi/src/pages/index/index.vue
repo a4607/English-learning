@@ -1,12 +1,5 @@
 <template>
   <view class="roadmap-page">
-    <view class="header">
-      <button class="toggle-btn" @click="onToggle">⇄</button>
-      <view class="title">
-        <text class="chapter">{{ currentUnit.chapter }}</text>
-        <text class="sub">{{ currentUnit.subtitle }}</text>
-      </view>
-    </view>
 
     <!-- 顶部状态栏（仿多邻国） -->
     <view class="topbar">
@@ -91,64 +84,23 @@ const currentUnit = ref(units.value[currentUnitIndex.value])
 
 const lockedTip = ref({ visible: false, levelIndex: 0, subtitle: '' })
 
-const goToQuiz = (level) => {
-  uni.navigateTo({ url: `/pages/quiz/quiz?level=${level}` })
-}
-
-const goQuiz = () => {
-  uni.navigateTo({ url: `/pages/vocab/index?unit=${currentUnitIndex.value}` })
-}
-
-const onToggle = () => {
-  currentUnitIndex.value = (currentUnitIndex.value + 1) % units.value.length
-  currentUnit.value = units.value[currentUnitIndex.value]
-}
-
-const goPreview = () => {
-  uni.navigateTo({ url: `/pages/preview/index?unit=${currentUnitIndex.value}` })
-}
-
-const goReadAloud = () => {
-  uni.navigateTo({ url: `/pages/index/readaloud/index?unit=${currentUnitIndex.value}` })
-}
-
-const goAIDialog = () => {
-  uni.navigateTo({ url: '/pages/index/aidialog/index' })
-}
-
-const onNodeClick = (lv, index) => {
-  if (lv.status === 'locked') {
-    lockedTip.value = { visible: true, levelIndex: index, subtitle: lv.subtitle }
-    return
-  }
-  goToQuiz(lv.id)
-}
-
-const hideLockedTip = () => {
-  lockedTip.value.visible = false
-}
-
-const restoreUnlockState = () => {
-  // 移除levels相关逻辑，因为没有levels数据结构
-  console.log('restoreUnlockState function called')
-}
-
-onMounted(() => {
-  setTimeout(() => { }, 0)
-  restoreUnlockState()
-})
-
-// 知识点弹窗控制
+const goToQuiz = (level) => { uni.navigateTo({ url: `/pages/quiz/quiz?level=${level}` }) }
+const goQuiz = () => { uni.navigateTo({ url: `/pages/vocab/index?unit=${currentUnitIndex.value}` }) }
+const onToggle = () => { currentUnitIndex.value = (currentUnitIndex.value + 1) % units.value.length; currentUnit.value = units.value[currentUnitIndex.value] }
+const goPreview = () => { uni.navigateTo({ url: `/pages/preview/index?unit=${currentUnitIndex.value}` }) }
+const goReadAloud = () => { uni.navigateTo({ url: `/pages/index/readaloud/index?unit=${currentUnitIndex.value}` }) }
+const goAIDialog = () => { uni.navigateTo({ url: '/pages/index/aidialog/index' }) }
+const onNodeClick = (lv, index) => { if (lv.status === 'locked') { lockedTip.value = { visible: true, levelIndex: index, subtitle: lv.subtitle }; return } goToQuiz(lv.id) }
+const hideLockedTip = () => { lockedTip.value.visible = false }
+const restoreUnlockState = () => { console.log('restoreUnlockState function called') }
+onMounted(() => { setTimeout(() => { }, 0); restoreUnlockState() })
 const showKnowledge = ref(false)
 const openKnowledge = () => { showKnowledge.value = true }
 const closeKnowledge = () => { showKnowledge.value = false }
-
-// 底部导航功能
 const goToSync = () => {}
 const goToHomework = () => { uni.navigateTo({ url: '/pages/homework/index' }) }
 const goToExpand = () => { uni.navigateTo({ url: '/pages/expand/index' }) }
 const goToMine = () => { uni.navigateTo({ url: '/pages/mine/index' }) }
-
 const openCourseMenu = () => { uni.showToast({ title: '课程菜单', icon: 'none' }) }
 const openStreak = () => { uni.showToast({ title: '连续天数', icon: 'none' }) }
 const openGems = () => { uni.showToast({ title: '宝石：' + userStats.value.gems, icon: 'none' }) }
@@ -157,11 +109,7 @@ const openHearts = () => { uni.showToast({ title: '生命：' + userStats.value.
 
 <style scoped>
 .roadmap-page { min-height: 100vh; background: #fff; display: flex; flex-direction: column; padding-bottom: 64px; padding-top: constant(safe-area-inset-top); padding-top: env(safe-area-inset-top); overflow-x: hidden }
-.header { display: flex; align-items: center; justify-content: space-between; padding: 16px; box-sizing: border-box }
-.toggle-btn { width: 34px; height: 34px; border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; color: #111; display: flex; align-items: center; justify-content: center; font-size: 16px }
-.title { display: flex; flex-direction: column }
-.chapter { font-size: 20px; font-weight: 800; color: #111 }
-.sub { font-size: 16px; color: #333; margin-top: 6px }
+/* header removed */
 
 /* 顶部状态栏样式 */
 .topbar { display:flex; align-items:center; gap:14px; padding:6px 16px 10px }
@@ -181,7 +129,8 @@ const openHearts = () => { uni.showToast({ title: '生命：' + userStats.value.
 .menu-container { flex: 1; padding: 12px 16px; overflow-x: hidden; box-sizing: border-box; width: 100% }
 .menu-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 22px 18px; margin: 0 0 16px 0; box-shadow: 0 1px 2px rgba(0, 0, 0, .04); width: 100%; max-width: 100%; box-sizing: border-box; display: block }
 .menu-text { font-size: 18px; font-weight: 800; color: #111 }
-/* 知识点弹窗样式 */
+
+/* 知识点弹窗样式保持不变 */
 .knowledge-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); display:flex; align-items:center; justify-content:center; z-index:10001 }
 .knowledge-modal { width: 86%; max-width: 420px; background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:16px 16px 20px }
 .k-header { margin-bottom:10px }
