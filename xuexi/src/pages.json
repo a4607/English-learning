@@ -57,7 +57,7 @@
 			}
 		},
 		{
-			"path": "pages/readaloud/index",
+			"path": "pages/index/readaloud/index",
 			"style": {
 				"navigationBarTitleText": "课文跟读与朗读",
 				"navigationStyle": "custom",
@@ -65,7 +65,7 @@
 			}
 		},
 		{
-			"path": "pages/aidialog/index",
+			"path": "pages/index/aidialog/index",
 			"style": {
 				"navigationBarTitleText": "AI 场景对话",
 				"navigationStyle": "custom",
@@ -73,7 +73,7 @@
 			}
 		},
 		{
-			"path": "pages/grammar/index",
+			"path": "pages/expand/grammar/index",
 			"style": {
 				"navigationBarTitleText": "语法进阶",
 				"navigationStyle": "custom",
@@ -81,7 +81,7 @@
 			}
 		},
 		{
-			"path": "pages/reading/index",
+			"path": "pages/expand/reading/index",
 			"style": {
 				"navigationBarTitleText": "阅读理解",
 				"navigationStyle": "custom",
@@ -89,7 +89,7 @@
 			}
 		},
 		{
-			"path": "pages/writing/index",
+			"path": "pages/expand/writing/index",
 			"style": {
 				"navigationBarTitleText": "写作练习",
 				"navigationStyle": "custom",
@@ -97,7 +97,7 @@
 			}
 		},
 		{
-			"path": "pages/speaking/index",
+			"path": "pages/expand/speaking/index",
 			"style": {
 				"navigationBarTitleText": "口语训练",
 				"navigationStyle": "custom",

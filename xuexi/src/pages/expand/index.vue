@@ -88,11 +88,11 @@ const onToggle = () => {
 }
 
 // 拓展学习功能
-const goAdvancedQuiz = () => { uni.navigateTo({ url: '/pages/grammar/index' }) }
-const goGrammar = () => { uni.navigateTo({ url: '/pages/grammar/index' }) }
-const goReading = () => { uni.navigateTo({ url: '/pages/reading/index' }) }
-const goWriting = () => { uni.navigateTo({ url: '/pages/writing/index' }) }
-const goSpeaking = () => { uni.navigateTo({ url: '/pages/speaking/index' }) }
+const goAdvancedQuiz = () => { uni.navigateTo({ url: '/pages/expand/grammar/index' }) }
+const goGrammar = () => { uni.navigateTo({ url: '/pages/expand/grammar/index' }) }
+const goReading = () => { uni.navigateTo({ url: '/pages/expand/reading/index' }) }
+const goWriting = () => { uni.navigateTo({ url: '/pages/expand/writing/index' }) }
+const goSpeaking = () => { uni.navigateTo({ url: '/pages/expand/speaking/index' }) }
 const goCulture = () => { uni.showToast({ title: '敬请期待', icon: 'none' }) }
 
 // 底部导航功能

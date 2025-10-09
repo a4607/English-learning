@@ -16,6 +16,10 @@ pnpm-debug.log*
 !.vscode/settings.json
 !.vscode/extensions.json
 
+# Cursor rules (do not commit)
+.cursor/
+xuexi/.cursor/
+
 # System files
 .DS_Store
 Thumbs.db
