@@ -91,32 +91,32 @@ const goToExpand = () => { uni.navigateTo({ url: '/pages/expand/index' }) }
 </script>
 
 <style scoped>
-.mine-page { min-height: 100vh; background: #fff; padding-bottom: 64px }
-.profile { display: flex; align-items: center; padding: 16px; gap: 12px }
-.avatar { width: 56px; height: 56px; border-radius: 12px; background: #f3f4f6 }
-.info { flex: 1 }
-.name { display: block; font-size: 16px; font-weight: 800; color: #111 }
-.desc { display: block; margin-top: 4px; color: #6b7280; font-size: 12px }
-.login-btn { border: 1px solid #3b82f6; color: #3b82f6; background: #fff; border-radius: 10px; padding: 6px 10px; font-size: 12px }
+.mine-page { min-height: 100vh; background: var(--duo-surface); padding-bottom: 64px }
+.profile { display:flex; align-items:center; padding:16px; gap:12px }
+.avatar { width:56px; height:56px; border-radius:12px; background:#f3f4f6 }
+.info { flex:1 }
+.name { display:block; font-size:16px; font-weight:800; color: var(--duo-text) }
+.desc { display:block; margin-top:4px; color: var(--duo-muted); font-size:12px }
+.login-btn { border:1px solid var(--duo-primary); color: var(--duo-primary); background:#fff; border-radius:10px; padding:6px 10px; font-size:12px }
 
-.stat-cards { display: flex; padding: 0 16px 8px; gap: 12px }
-.card { flex: 1; border: 1px solid #e5e7eb; border-radius: 12px; padding: 12px; text-align: center }
-.num { display: block; font-size: 18px; font-weight: 800; color: #111 }
-.label { display: block; margin-top: 6px; font-size: 12px; color: #6b7280 }
+.stat-cards { display:flex; padding:0 16px 8px; gap:12px }
+.card { flex:1; border:1px solid var(--duo-border); border-radius: var(--duo-radius); padding:12px; text-align:center; box-shadow: var(--duo-shadow) }
+.num { display:block; font-size:18px; font-weight:800; color: var(--duo-text) }
+.label { display:block; margin-top:6px; font-size:12px; color: var(--duo-muted) }
 
-.menu { padding: 8px 16px; display: flex; flex-direction: column; gap: 10px }
-.menu-item { display: flex; align-items: center; gap: 12px; padding: 14px; border: 1px solid #e5e7eb; border-radius: 12px }
-.m-icon { font-size: 20px }
-.m-texts { flex: 1 }
-.m-title { display: block; font-size: 14px; font-weight: 700; color: #111 }
-.m-sub { display: block; margin-top: 4px; font-size: 12px; color: #6b7280 }
-.m-arrow { color: #9ca3af }
+.menu { padding:8px 16px; display:flex; flex-direction:column; gap:10px }
+.menu-item { display:flex; align-items:center; gap:12px; padding:14px; border:1px solid var(--duo-border); border-radius: var(--duo-radius); box-shadow: var(--duo-shadow) }
+.m-icon { font-size:20px }
+.m-texts { flex:1 }
+.m-title { display:block; font-size:14px; font-weight:700; color: var(--duo-text) }
+.m-sub { display:block; margin-top:4px; font-size:12px; color: var(--duo-muted) }
+.m-arrow { color:#9ca3af }
 
-.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; display: flex; justify-content: space-around; padding: 8px 0; border-top: 1px solid #e5e7eb; z-index: 10000 }
-.nav-item { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 12px; border-radius: 8px; position: relative }
-.nav-item.active .nav-icon, .nav-item.active .nav-label { color: #3b82f6 }
-.active-underline { position: absolute; bottom: 4px; width: 28px; height: 3px; border-radius: 3px; background: #3b82f6 }
-.nav-icon { font-size: 26px; color: #111 }
-.nav-label { font-size: 10px; color: #6b7280; font-weight: 500 }
+.bottom-nav { position:fixed; bottom:0; left:0; right:0; background:#fff; display:flex; justify-content:space-around; padding:8px 0; border-top:1px solid var(--duo-border); z-index:10000 }
+.nav-item { display:flex; flex-direction:column; align-items:center; gap:6px; padding:10px 12px; border-radius:8px; position:relative }
+.nav-item.active .nav-icon, .nav-item.active .nav-label { color: var(--duo-primary) }
+.active-underline { position:absolute; bottom:4px; width:28px; height:3px; border-radius:3px; background: var(--duo-primary) }
+.nav-icon { font-size:26px; color: var(--duo-text) }
+.nav-label { font-size:10px; color:#6b7280; font-weight:500 }
 </style>
 

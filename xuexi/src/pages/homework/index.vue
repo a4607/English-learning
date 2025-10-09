@@ -57,15 +57,8 @@ const tasks = ref([
   { id: 3, title: '口语跟读练习', desc: '至少完成10个词/句的跟读', due: '本周日', icon: '🎤', route: '/pages/vocab/index', urgent: false, done: false }
 ])
 
-const openTask = (task) => {
-  uni.showToast({ title: task.title, icon: 'none' })
-}
-
-const startTask = (task) => {
-  if (task.route) {
-    uni.navigateTo({ url: task.route })
-  }
-}
+const openTask = (task) => { uni.showToast({ title: task.title, icon: 'none' }) }
+const startTask = (task) => { if (task.route) uni.navigateTo({ url: task.route }) }
 
 // 底部导航功能
 const goToSync = () => { uni.navigateTo({ url: '/pages/index/index' }) }
@@ -74,82 +67,31 @@ const goToMine = () => { uni.navigateTo({ url: '/pages/mine/index' }) }
 </script>
 
 <style scoped>
-.homework-page {
-  min-height: 100vh;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 64px;
-}
-
-.header {
-  padding: 16px;
-}
-
-.title {
-  display: block;
-  font-size: 20px;
-  font-weight: 800;
-  color: #111;
-}
-
-.sub {
-  display: block;
-  margin-top: 6px;
-  color: #6b7280;
-  font-size: 12px;
-}
-
-.list { 
-  flex: 1; 
-  padding: 8px 16px; 
-}
-
-.task-card {
-  display: flex;
-  gap: 12px;
-  padding: 16px;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  align-items: center;
-}
-
-.task-card.done { opacity: .7 }
-
-.task-left { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #f3f4f6; border-radius: 8px }
-.task-icon { font-size: 22px }
-
-.task-body { flex: 1 }
-.task-title { display: block; font-size: 16px; font-weight: 700; color: #111 }
-.task-desc { display: block; font-size: 12px; color: #6b7280; margin-top: 4px }
-.meta { margin-top: 8px; display: flex; gap: 10px }
-.meta-item { font-size: 12px; color: #6b7280 }
-.meta-item.highlight { color: #ef4444 }
-
-.task-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px }
-.status-dot { width: 10px; height: 10px; border-radius: 50%; background: #f59e0b }
-.status-dot.ok { background: #22c55e }
-.status-text { font-size: 12px; color: #6b7280 }
-.cta { border: none; background: #3b82f6; color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 12px }
-
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #fff;
-  display: flex;
-  justify-content: space-around;
-  padding: 8px 0;
-  border-top: 1px solid #e5e7eb;
-  z-index: 10000
-}
-
-.nav-item { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 12px; border-radius: 8px; position: relative }
-.nav-item.active .nav-icon, .nav-item.active .nav-label { color: #3b82f6 }
-.active-underline { position: absolute; bottom: 4px; width: 28px; height: 3px; border-radius: 3px; background: #3b82f6 }
-.nav-icon { font-size: 26px; color: #111 }
-.nav-label { font-size: 10px; color: #6b7280; font-weight: 500 }
+.homework-page { min-height:100vh; background: var(--duo-surface); display:flex; flex-direction:column; padding-bottom:64px }
+.header { padding:16px }
+.title { display:block; font-size:20px; font-weight:800; color: var(--duo-text) }
+.sub { display:block; margin-top:6px; color: var(--duo-muted); font-size:12px }
+.list { flex:1; padding:8px 16px }
+.task-card { display:flex; gap:12px; padding:16px; border:1px solid var(--duo-border); border-radius: var(--duo-radius); margin-bottom:12px; align-items:center; box-shadow: var(--duo-shadow) }
+.task-card.done { opacity:.7 }
+.task-left { width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:#f3f4f6; border-radius:8px }
+.task-icon { font-size:22px }
+.task-body { flex:1 }
+.task-title { display:block; font-size:16px; font-weight:700; color: var(--duo-text) }
+.task-desc { display:block; font-size:12px; color: var(--duo-muted); margin-top:4px }
+.meta { margin-top:8px; display:flex; gap:10px }
+.meta-item { font-size:12px; color: var(--duo-muted) }
+.meta-item.highlight { color:#ef4444 }
+.task-right { display:flex; flex-direction:column; align-items:flex-end; gap:8px }
+.status-dot { width:10px; height:10px; border-radius:50%; background:#f59e0b }
+.status-dot.ok { background:#22c55e }
+.status-text { font-size:12px; color: var(--duo-muted) }
+.cta { border:none; background: var(--duo-primary); color:#fff; padding:8px 12px; border-radius:10px; font-size:12px }
+.bottom-nav { position:fixed; bottom:0; left:0; right:0; background:#fff; display:flex; justify-content:space-around; padding:8px 0; border-top:1px solid var(--duo-border); z-index:10000 }
+.nav-item { display:flex; flex-direction:column; align-items:center; gap:6px; padding:10px 12px; border-radius:8px; position:relative }
+.nav-item.active .nav-icon, .nav-item.active .nav-label { color: var(--duo-primary) }
+.active-underline { position:absolute; bottom:4px; width:28px; height:3px; border-radius:3px; background: var(--duo-primary) }
+.nav-icon { font-size:26px; color: var(--duo-text) }
+.nav-label { font-size:10px; color:#6b7280; font-weight:500 }
 </style>
 
