@@ -6,7 +6,6 @@
         <text class="chapter">{{ currentUnit.chapter }}</text>
         <text class="sub">{{ currentUnit.subtitle }}</text>
       </view>
-      <button class="summary-btn" @click="openKnowledge">知识总结</button>
     </view>
 
     <!-- 顶部状态栏（仿多邻国） -->
@@ -163,7 +162,6 @@ const openHearts = () => { uni.showToast({ title: '生命：' + userStats.value.
 .title { display: flex; flex-direction: column }
 .chapter { font-size: 20px; font-weight: 800; color: #111 }
 .sub { font-size: 16px; color: #333; margin-top: 6px }
-.summary-btn { border: 1px solid #3b82f6; color: #3b82f6; background: #fff; padding: 6px 12px; border-radius: 10px }
 
 /* 顶部状态栏样式 */
 .topbar { display:flex; align-items:center; gap:14px; padding:6px 16px 10px }
