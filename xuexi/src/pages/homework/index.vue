@@ -7,9 +7,7 @@
 
     <scroll-view class="list" scroll-y>
       <view v-for="task in tasks" :key="task.id" class="task-card" :class="{ done: task.done }" @click="openTask(task)">
-        <view class="task-left">
-          <view class="task-icon">{{ task.icon }}</view>
-        </view>
+        <view class="task-left"><view class="task-icon">{{ task.icon }}</view></view>
         <view class="task-body">
           <text class="task-title">{{ task.title }}</text>
           <text class="task-desc">{{ task.desc }}</text>
@@ -26,24 +24,13 @@
       </view>
     </scroll-view>
 
-    <view class="bottom-nav">
-      <view class="nav-item" @click="goToSync">
-        <text class="nav-icon">🎓</text>
-        <text class="nav-label">同步学</text>
-      </view>
-      <view class="nav-item active">
-        <text class="nav-icon">📝</text>
-        <text class="nav-label">作业</text>
-        <view class="active-underline"></view>
-      </view>
-      <view class="nav-item" @click="goToExpand">
-        <text class="nav-icon">🧭</text>
-        <text class="nav-label">拓展学</text>
-      </view>
-      <view class="nav-item" @click="goToMine">
-        <text class="nav-icon">🙂</text>
-        <text class="nav-label">我的</text>
-      </view>
+    <!-- 新底部导航（仿多邻国） -->
+    <view class="duo-bottom">
+      <view class="duo-item" @click="goToSync"><image class="duo-icon" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/fbe0c187341c280e161f76fb4cbda1d7.svg" /></view>
+      <view class="duo-item" @click="goToPronounce"><image class="duo-icon" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/3b4928101472fce4e9edac920c1b3817.svg" /></view>
+      <view class="duo-item active"><image class="duo-icon" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/5d2ba4a4504db1b554515043e94cc7da.svg" /></view>
+      <view class="duo-item" @click="goToShop"><image class="duo-icon" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/0e58a94dda219766d98c7796b910beee.svg" /></view>
+      <view class="duo-item" @click="goToMine"><image class="duo-icon" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/e93ac282acf802a6258c761d3e9f9888.svg" /></view>
     </view>
   </view>
 </template>
@@ -54,15 +41,16 @@ import { ref } from 'vue'
 const tasks = ref([
   { id: 1, title: '预习词汇与句子', desc: '完成当前单元词句预习', due: '本周五', icon: '📚', route: '/pages/vocab/index', urgent: false, done: false },
   { id: 2, title: '预习内容检测', desc: '完成本课时检查题', due: '本周五', icon: '✅', route: '/pages/preview/index', urgent: true, done: false },
-  { id: 3, title: '口语跟读练习', desc: '至少完成10个词/句的跟读', due: '本周日', icon: '🎤', route: '/pages/vocab/index', urgent: false, done: false }
+  { id: 3, title: '口语跟读练习', desc: '至少完成10个词/句的跟读', due: '本周日', icon: '🎤', route: '/pages/index/readaloud/index', urgent: false, done: false }
 ])
 
 const openTask = (task) => { uni.showToast({ title: task.title, icon: 'none' }) }
 const startTask = (task) => { if (task.route) uni.navigateTo({ url: task.route }) }
 
 // 底部导航功能
-const goToSync = () => { uni.navigateTo({ url: '/pages/index/index' }) }
-const goToExpand = () => { uni.navigateTo({ url: '/pages/expand/index' }) }
+const goToSync = () => { uni.reLaunch ? uni.reLaunch({ url: '/pages/index/index' }) : uni.navigateTo({ url: '/pages/index/index' }) }
+const goToPronounce = () => { uni.navigateTo({ url: '/pages/index/readaloud/index' }) }
+const goToShop = () => { uni.showToast({ title: '小店（占位）', icon: 'none' }) }
 const goToMine = () => { uni.navigateTo({ url: '/pages/mine/index' }) }
 </script>
 
@@ -87,11 +75,11 @@ const goToMine = () => { uni.navigateTo({ url: '/pages/mine/index' }) }
 .status-dot.ok { background:#22c55e }
 .status-text { font-size:12px; color: var(--duo-muted) }
 .cta { border:none; background: var(--duo-primary); color:#fff; padding:8px 12px; border-radius:10px; font-size:12px }
-.bottom-nav { position:fixed; bottom:0; left:0; right:0; background:#fff; display:flex; justify-content:space-around; padding:8px 0; border-top:1px solid var(--duo-border); z-index:10000 }
-.nav-item { display:flex; flex-direction:column; align-items:center; gap:6px; padding:10px 12px; border-radius:8px; position:relative }
-.nav-item.active .nav-icon, .nav-item.active .nav-label { color: var(--duo-primary) }
-.active-underline { position:absolute; bottom:4px; width:28px; height:3px; border-radius:3px; background: var(--duo-primary) }
-.nav-icon { font-size:26px; color: var(--duo-text) }
-.nav-label { font-size:10px; color:#6b7280; font-weight:500 }
+
+/* 新底部导航 */
+.duo-bottom { position: fixed; left:0; right:0; bottom:0; display:flex; justify-content:space-around; align-items:center; background:#fff; border-top:1px solid var(--duo-border); padding:8px 0; z-index:10000 }
+.duo-item { padding:6px 10px; border-radius:10px }
+.duo-item.active { background:#eef7e6 }
+.duo-icon { width:28px; height:28px }
 </style>
 
