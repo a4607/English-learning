@@ -55,6 +55,54 @@
 				"navigationStyle": "custom",
 				"backgroundColor": "#1a1a1a"
 			}
+		},
+		{
+			"path": "pages/readaloud/index",
+			"style": {
+				"navigationBarTitleText": "课文跟读与朗读",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/aidialog/index",
+			"style": {
+				"navigationBarTitleText": "AI 场景对话",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/grammar/index",
+			"style": {
+				"navigationBarTitleText": "语法进阶",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/reading/index",
+			"style": {
+				"navigationBarTitleText": "阅读理解",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/writing/index",
+			"style": {
+				"navigationBarTitleText": "写作练习",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
+		},
+		{
+			"path": "pages/speaking/index",
+			"style": {
+				"navigationBarTitleText": "口语训练",
+				"navigationStyle": "custom",
+				"backgroundColor": "#1a1a1a"
+			}
 		}
 	],
 	"globalStyle": {

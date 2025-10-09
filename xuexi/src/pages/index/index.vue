@@ -12,9 +12,9 @@
     <scroll-view class="menu-container" scroll-y>
       <view class="menu-card" @click="goQuiz"><text class="menu-text">词句预习</text></view>
       <view class="menu-card" @click="goPreview"><text class="menu-text">预习内容检测</text></view>
-      <view class="menu-card"><text class="menu-text">课文跟读与朗读</text></view>
-      <view class="menu-card"><text class="menu-text">课后练习</text></view>
-      <view class="menu-card"><text class="menu-text">AI场景对话</text></view>
+      <view class="menu-card" @click="goReadAloud"><text class="menu-text">课文跟读与朗读</text></view>
+      <view class="menu-card" @click="goHomework"><text class="menu-text">课后练习</text></view>
+      <view class="menu-card" @click="goAIDialog"><text class="menu-text">AI场景对话</text></view>
     </scroll-view>
 
     <!-- 知识点弹窗（当前单元） -->
@@ -83,6 +83,18 @@ const onToggle = () => {
 
 const goPreview = () => {
   uni.navigateTo({ url: `/pages/preview/index?unit=${currentUnitIndex.value}` })
+}
+
+const goReadAloud = () => {
+  uni.navigateTo({ url: `/pages/readaloud/index?unit=${currentUnitIndex.value}` })
+}
+
+const goHomework = () => {
+  uni.navigateTo({ url: '/pages/homework/index' })
+}
+
+const goAIDialog = () => {
+  uni.navigateTo({ url: '/pages/aidialog/index' })
 }
 
 const onNodeClick = (lv, index) => {

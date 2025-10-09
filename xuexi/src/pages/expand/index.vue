@@ -88,42 +88,17 @@ const onToggle = () => {
 }
 
 // 拓展学习功能
-const goAdvancedQuiz = () => {
-  uni.showToast({ title: '高级词汇练习', icon: 'none' })
-}
-
-const goGrammar = () => {
-  uni.showToast({ title: '语法进阶', icon: 'none' })
-}
-
-const goReading = () => {
-  uni.showToast({ title: '阅读理解', icon: 'none' })
-}
-
-const goWriting = () => {
-  uni.showToast({ title: '写作练习', icon: 'none' })
-}
-
-const goSpeaking = () => {
-  uni.showToast({ title: '口语训练', icon: 'none' })
-}
-
-const goCulture = () => {
-  uni.showToast({ title: '文化知识', icon: 'none' })
-}
+const goAdvancedQuiz = () => { uni.navigateTo({ url: '/pages/grammar/index' }) }
+const goGrammar = () => { uni.navigateTo({ url: '/pages/grammar/index' }) }
+const goReading = () => { uni.navigateTo({ url: '/pages/reading/index' }) }
+const goWriting = () => { uni.navigateTo({ url: '/pages/writing/index' }) }
+const goSpeaking = () => { uni.navigateTo({ url: '/pages/speaking/index' }) }
+const goCulture = () => { uni.showToast({ title: '敬请期待', icon: 'none' }) }
 
 // 底部导航功能
-const goToSync = () => {
-  uni.navigateTo({ url: '/pages/index/index' })
-}
-
-const goToHomework = () => {
-  uni.navigateTo({ url: '/pages/homework/index' })
-}
-
-const goToMine = () => {
-  uni.navigateTo({ url: '/pages/mine/index' })
-}
+const goToSync = () => { uni.navigateTo({ url: '/pages/index/index' }) }
+const goToHomework = () => { uni.navigateTo({ url: '/pages/homework/index' }) }
+const goToMine = () => { uni.navigateTo({ url: '/pages/mine/index' }) }
 </script>
 
 <style scoped>
