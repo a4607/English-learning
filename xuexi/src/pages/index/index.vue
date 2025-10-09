@@ -9,6 +9,32 @@
       <button class="summary-btn" @click="openKnowledge">知识总结</button>
     </view>
 
+    <!-- 顶部状态栏（仿多邻国） -->
+    <view class="topbar">
+      <view class="tb-item" @click="openCourseMenu">
+        <view class="flag">
+          <image class="flag-img" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/87938207afff1598611ba626a8c4827c.svg" mode="aspectFit" />
+          <text class="flag-level">5</text>
+        </view>
+      </view>
+      <view class="tb-item" @click="openStreak">
+        <view class="streak">
+          <image class="streak-img" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/ba95e6081679d9d7e8c132da5cfce1ec.svg" mode="aspectFit" />
+          <text class="streak-num">{{ userStats.streak }}</text>
+        </view>
+      </view>
+      <view class="tb-item" @click="openGems">
+        <image class="gem-img" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/45c14e05be9c1af1d7d0b54c6eed7eee.svg" mode="aspectFit" />
+        <text class="gem-num">{{ userStats.gems }}</text>
+      </view>
+      <view class="tb-item" @click="openHearts">
+        <view class="hearts">
+          <image class="heart-img" src="https://d35aaqx5ub95lt.cloudfront.net/images/hearts/8fdba477c56a8eeb23f0f7e67fdec6d9.svg" mode="aspectFit" />
+          <text class="heart-num">{{ userStats.lives }}</text>
+        </view>
+      </view>
+    </view>
+
     <scroll-view class="menu-container" scroll-y>
       <view class="menu-card" @click="goQuiz"><text class="menu-text">词句预习</text></view>
       <view class="menu-card" @click="goPreview"><text class="menu-text">预习内容检测</text></view>
@@ -123,6 +149,11 @@ const goToSync = () => {}
 const goToHomework = () => { uni.navigateTo({ url: '/pages/homework/index' }) }
 const goToExpand = () => { uni.navigateTo({ url: '/pages/expand/index' }) }
 const goToMine = () => { uni.navigateTo({ url: '/pages/mine/index' }) }
+
+const openCourseMenu = () => { uni.showToast({ title: '课程菜单', icon: 'none' }) }
+const openStreak = () => { uni.showToast({ title: '连续天数', icon: 'none' }) }
+const openGems = () => { uni.showToast({ title: '宝石：' + userStats.value.gems, icon: 'none' }) }
+const openHearts = () => { uni.showToast({ title: '生命：' + userStats.value.lives, icon: 'none' }) }
 </script>
 
 <style scoped>
@@ -133,6 +164,22 @@ const goToMine = () => { uni.navigateTo({ url: '/pages/mine/index' }) }
 .chapter { font-size: 20px; font-weight: 800; color: #111 }
 .sub { font-size: 16px; color: #333; margin-top: 6px }
 .summary-btn { border: 1px solid #3b82f6; color: #3b82f6; background: #fff; padding: 6px 12px; border-radius: 10px }
+
+/* 顶部状态栏样式 */
+.topbar { display:flex; align-items:center; gap:14px; padding:6px 16px 10px }
+.tb-item { display:flex; align-items:center }
+.flag { position:relative; width:46px; height:37px }
+.flag-img { width:46px; height:37px }
+.flag-level { position:absolute; right:-8px; top:-6px; background:#10b981; color:#fff; border-radius:999px; font-size:12px; padding:2px 6px; font-weight:700 }
+.streak { display:flex; align-items:center; gap:6px }
+.streak-img { width:32px; height:32px }
+.streak-num { font-weight:700; color:#111 }
+.gem-img { width:28px; height:28px; margin-right:6px }
+.gem-num { font-weight:700; color:#111 }
+.hearts { display:flex; align-items:center; gap:6px }
+.heart-img { width:32px; height:32px }
+.heart-num { font-weight:700; color:#111 }
+
 .menu-container { flex: 1; padding: 12px 16px; overflow-x: hidden; box-sizing: border-box; width: 100% }
 .menu-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 22px 18px; margin: 0 0 16px 0; box-shadow: 0 1px 2px rgba(0, 0, 0, .04); width: 100%; max-width: 100%; box-sizing: border-box; display: block }
 .menu-text { font-size: 18px; font-weight: 800; color: #111 }
