@@ -5,7 +5,7 @@
     <view class="topbar">
       <view class="tb-item" @click="openCourseMenu">
         <view class="flag">
-          <image class="flag-img" src="https://d35aaqx5ub95lt.cloudfront.net/vendor/87938207afff1598611ba626a8c4827c.svg" mode="aspectFit" />
+          <view class="flag-sprite"></view>
           <text class="flag-level">5</text>
         </view>
       </view>
@@ -115,7 +115,7 @@ const openHearts = () => { uni.showToast({ title: '生命：' + userStats.value.
 .topbar { display:flex; align-items:center; gap:14px; padding:6px 16px 10px }
 .tb-item { display:flex; align-items:center }
 .flag { position:relative; width:46px; height:37px }
-.flag-img { width:46px; height:37px }
+.flag-sprite { width:46px; height:37px; background-image:url('https://d35aaqx5ub95lt.cloudfront.net/vendor/87938207afff1598611ba626a8c4827c.svg'); background-repeat:no-repeat; background-position:0 0; background-size:46px auto; border-radius:8px }
 .flag-level { position:absolute; right:-8px; top:-6px; background:#10b981; color:#fff; border-radius:999px; font-size:12px; padding:2px 6px; font-weight:700 }
 .streak { display:flex; align-items:center; gap:6px }
 .streak-img { width:32px; height:32px }
